@@ -1,0 +1,308 @@
+@charset "utf-8";
+.row01 {
+  padding-top: 70px;
+}
+.main_content {
+  background: url(../images/main_bg.jpg) no-repeat;
+  background-size: cover;
+}
+.main_content .txt_box {
+  /* padding: var(--space120) 0; */
+  padding:200px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.row01 .txt_h3 {
+  background-color: transparent;
+  font-weight: 300;
+}
+.txt_h3 b {
+  /* color: var(--main-color); */
+  color: #fff;
+}
+.main_info_row01 h1 img {
+  height: var(--h1-img-size);
+}
+/* 메인슬라이드 */
+.main_txt_slide {
+  text-align: left;
+}
+.main_txt_slide h1 {
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 14px;
+}
+.main_txt_slide h1 span {
+  font-size: var(--h2-font-size);
+  font-weight: 300;
+}
+.main_txt_slide h2 {
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.3;
+}
+.main_search_w {
+  position: relative;
+  background-image: url(../images/main_row02_bg.png);
+  background-position: center;
+  background-color: var(--main-color);
+  color: #fff;
+  text-align: center;
+  padding: 40px 0 60px;
+}
+.main_info_row02::after,
+.main_row01_line03::after,
+.main_search_w::after {
+  content: "";
+  position: absolute;
+  background-color: var(--main-color);
+  width: 35px;
+  height: 35px;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 1;
+}
+.main_search_w::after {
+  background-color: var(--main-color);
+}
+.main_row01_line03::after {
+  /* background-color: var(--gray-light); */
+  background-color: var(--main-color);
+}
+.main_info_row02::after {
+  background-color: var(--gray-bg);
+}
+.search_wrap {
+  display: flex;
+  width: 740px;
+  height: 60px;
+  margin: 0 auto;
+}
+.main_search_w h4 {
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 1.5em;
+}
+.search_wrap button,
+.selectBox,
+.search_wrap input {
+  font-size: var(--main-font-size);
+  text-align: center;
+  height: 100%;
+  background: #fff;
+  border: 0;
+}
+.search_wrap input::placeholder {
+  font-size: var(--font-size-18);
+  font-weight: 500;
+}
+.selectBox {
+  position: relative;
+  width: 100px;
+  color: #333;
+  padding-right: 20px;
+  border-radius: 30px 0 0 30px;
+}
+.search_wrap button {
+  position: relative;
+  color: transparent;
+  width: 15%;
+  border-radius: 0 30px 30px 0;
+}
+.search_wrap button::after {
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  transform: translateX(-50%);
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: url(../images/icon_btn_mglass.png) no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+.select-box {
+  position: relative;
+}
+.search_wrap img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-30%);
+  width: 14px;
+  z-index: 10;
+}
+.main_row01_line03 {
+  position: relative;
+  text-align: center;
+  padding: var(--space50) 0;
+  /* background-color: var(--gray-light); */
+  background-color: var(--main-color);
+}
+.main_row01_line03 h4 {
+  font-weight: 300;
+  color:#fff;
+}
+.main_row01_line03 h4 b {
+  font-weight: 600;
+  /* color: var(--main-color); */
+  color:#fff;
+}
+.main_row01_line04 {
+  background-color: #fafbfc;
+  padding: 70px 0 30px;
+}
+.main_row01_line04 ul {
+  display: flex;
+  justify-content: space-between;
+}
+.main_row01_line04 li {
+  position: relative;
+  width: 32%;
+  padding: 2em;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px 0 rgb(193 202 223 / 60%);
+}
+.main_row01_line04 li::after {
+  content: "";
+  display: block;
+  padding-bottom: 20%;
+}
+.main_row01_line04 li:nth-child(2) {
+  margin: 0 30px;
+}
+.main_row01_line04 li img {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}
+.main_row01_line04 li h4 {
+  margin-bottom: 25px;
+}
+.main_info_row02 {
+  position: relative;
+  background-color: #fafbfc;
+}
+.main_info_row02 .row02_con {
+  padding-top: var(--space120);
+}
+.main_info_row02 .row02_con:last-child {
+  padding-bottom: var(--space120);
+}
+.row02_con p {
+  font-weight: 300;
+  margin-bottom: var(--space30);
+}
+.row02_con i {
+  position: relative;
+  display: block;
+  font-size: var(--font-size18);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.9;
+  padding-left: 2em;
+  background: url(../images/icon_check.png) no-repeat 0 50%;
+  background-size: 1rem;
+}
+.row02_con i::before {
+  position: absolute;
+  content: "";
+}
+.lg-50 {
+  float: left;
+  width: 50%;
+}
+.lg-50 h3 {
+  margin: var(--space30) 0;
+}
+.lg-50 img {
+  border-radius: 20px;
+  box-shadow: 0 8px 20px 0 rgb(193 202 223 / 60%);
+}
+.row02_con ul {
+  position: relative;
+  min-height: 400px;
+}
+.row02_con.con04 .left li,
+.row02_con .right li {
+  position: absolute;
+}
+.row02_con.con01 .right li:nth-child(2) {
+  right: 0;
+  bottom: 0;
+}
+.row02_con.con02 .left {
+  display: flex;
+  align-items: center;
+}
+.row02_con .right .text_wrap {
+  margin-left: 4em;
+}
+.row02_con.con03 .right li:nth-child(1) {
+  right: 0;
+}
+.row02_con.con03 .right li:nth-child(2) {
+  bottom: 0;
+}
+.row02_con.con04 .left li:nth-child(2) img {
+  box-shadow: none;
+}
+.row02_con.con04 .left li:nth-child(2) {
+  top: 20px;
+  right: 0;
+}
+.row02_con.con04 .left li:nth-child(1) {
+  bottom: 50px;
+}
+.main_info_row03_bg {
+  background: var(--gray-light);
+}
+.main_info_row03 .txt_box {
+  padding: var(--space80) 0;
+  text-align: center;
+}
+.main_info_row03 h4 {
+  font-weight: 400;
+  margin: var(--tit-p-btw) 0 0;
+}
+.main_info_row03 h2 {
+  color: var(--main-color);
+  line-height: 1;
+}
+.main_info_row03 .row03_box {
+  position: relative;
+}
+.main_info_row03 .row03_box::after {
+  content: "";
+  display: block;
+  padding-bottom: 30%;
+}
+.main_info_row03 .row03_box ul {
+  position: absolute;
+  top: -35px;
+  padding-bottom: var(--space80);
+}
+.main_info_row03 .row03_box li {
+  float: left;
+  width: 50%;
+  height: 70px;
+  line-height: 70px;
+  max-width: 580px;
+  border-radius: 10px;
+  margin-bottom: var(--space30);
+  background: #fff;
+  box-shadow: 0 8px 20px 0 rgb(193 202 223 / 60%);
+}
+.main_info_row03 .row03_box img {
+  margin: 0 30px 0 50px;
+}
+.main_info_row03 .row03_box p {
+  display: inline-block;
+}
+.main_info_row03 .row03_box li:nth-child(2n) {
+  float: right;
+}
+.comment-out {
+  display: none !important;
+}

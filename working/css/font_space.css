@@ -1,0 +1,96 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+@font-face {
+  font-family: "BAHNSCHRIFT";
+  src: url(../fonts/BAHNSCHRIFT.eot);
+  src: url(../fonts/fontawesome-webfont.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/BAHNSCHRIFT.TTF.woff) format("woff"),
+    url(../fonts/BAHNSCHRIFT.ttf) format("truetype");
+}
+:root {
+  --color-black: #333;
+  --main-color: #205ffc;
+  --h1-font-size: 3.125rem;
+  --h2-font-size: 2.25rem;
+  --h3-font-size: 1.75rem;
+  --h4-font-size: 1.375rem;
+  --font-size20: 1.25rem;
+  --font-size18: 1.125rem;
+  --main-font-size: 1rem;
+  --font-size14: 0.875rem;
+  --font-size12: 0.75rem;
+  --h1-img-size: 5rem;
+  --tit-p-btw: 1rem;
+  --space10: 0.625rem;
+  --space20: 1.25rem;
+  --space30: 1.875rem;
+  --space40: 2.5rem;
+  --space50: 3.125rem;
+  --space60: 3.75rem;
+  --space80: 5rem;
+  --space120: 7.5rem;
+  --black-txt: #333;
+  --gray-txt: #888;
+  --gray02-txt: #666;
+  --gray-light: #eee;
+  --gray-bg: #fafbfc;
+  --tr-hight: 50px;
+  --td-pd: 14px;
+  --col-th-space14: 0.875rem;
+}
+html,
+body,
+a {
+  font-size: var(--main-font-size);
+}
+h1,
+h3 {
+  font-weight: 400;
+}
+h1 {
+  font-size: var(--h1-font-size);
+  font-weight: 400;
+}
+h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+h3 {
+  font-size: var(--h3-font-size);
+  line-height: 1.4;
+}
+h4 {
+  font-size: var(--h4-font-size);
+  font-weight: 500;
+  line-height: 1.4;
+}
+p {
+  line-height: 1.7rem;
+}
+.txt_h3 {
+  font-size: var(--h3-font-size);
+  line-height: 2.3rem;
+}
+.main_content .txt_box {
+  padding: var(--space80) 0;
+}
+.p18 {
+  font-size: var(--font-size18);
+  font-weight: 300;
+  line-height: 1.625rem;
+}
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: var(--h2-font-size);
+  }
+  h2 {
+    font-size: var(--h3-font-size);
+  }
+  h3 {
+    font-size: var(--h4-font-size);
+  }
+}
