@@ -147,7 +147,7 @@
               </button>
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="main_row01_line03">
           <div class="main_content_w1200">
             <h4>
@@ -373,6 +373,24 @@
         easing: "ease-in-out-sine",
       });
 
+      $.ajax({
+        url: `https://beta.elevenlabs.io/v1/models`,
+        type: "get",
+        headers : {
+          "Accept": "application/json",
+          "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
+        },
+        contentType: "application/json",
+        datatype: "JSON",
+        success: function (obj) {
+          console.log(obj);
+        },
+        error: function (xhr, status, error) {
+          console.log("error",error);
+          console.log("error",xhr);
+          return
+        }
+      });
     </script>
   </body>
 </html>

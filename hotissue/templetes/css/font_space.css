@@ -12,7 +12,11 @@
 }
 :root {
   --color-black: #333;
-  --main-color: #205ffc;
+  --main-color: #fcbc1f;
+  /* --main-color: #FF9F29; */
+  /* --main-color: #0A4D68; */
+  /* --main-color: #0B2447; */
+  /* --main-color: #08789C; */
   --h1-font-size: 3.125rem;
   --h2-font-size: 2.25rem;
   --h3-font-size: 1.75rem;
