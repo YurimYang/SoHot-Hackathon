@@ -132,7 +132,10 @@
             <li id="res_video" class="uc_main_img">
               <i>나의 입모양 AI 아바타</i>
               <!-- 아바타 동영상 재생  -->
-         
+              <i>나의 입모양 AI 아바타</i>
+              <video src="http://127.0.0.1:8080/ㅇㅇㅇㅇ.mp4" auto controls width="500px">
+              이 브라우저에서 지원하지 않는 영상입니다.
+              </video>
               <!-- <video autoplay controls muted>
               <source src="/Users/kimsemin/Downloads/1683362367569.mp4" type="video/mp4">
               video
@@ -218,7 +221,7 @@
           },
           success: function (data) {
             var url = URL.createObjectURL(data);
-            let path = voice_id + "_.mp3";
+            let path = voice_id + ".mp3";
             const downloadLink = document.createElement('a');
             downloadLink.download = path;
             fetch(url)
@@ -317,15 +320,18 @@
       function view_video(data)
       {
         console.log("!!!!!!!!!!!!!",  data.result_url);
-        window.open = data.result_url;
-        let data_name = data.result_url.split('Expires=')[1].split('&')[0];
+        if (data.result_url){
+          window.open = data.result_url;
+          let data_name = data.result_url.split('Expires=')[1].split('&')[0];
+        }
+        else data_name = "길교수님_불어";
         const parentNode = document.getElementById('res_video');
 
-        parentNode.innerHTML = `
-          <i>나의 입모양 AI 아바타</i>
-          <video src="http://127.0.0.1:8080/`+data_name+`.mp4" auto controls width="500px">
-          이 브라우저에서 지원하지 않는 영상입니다.
-          </video>`;
+        // parentNode.innerHTML = `
+        //   <i>나의 입모양 AI 아바타</i>
+        //   <video src="http://127.0.0.1:8080/`+data_name+`.mp4" auto controls width="500px">
+        //   이 브라우저에서 지원하지 않는 영상입니다.
+        //   </video>`;
       }
       function getParameter(name) {
           name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

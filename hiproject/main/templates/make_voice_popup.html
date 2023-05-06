@@ -15,7 +15,7 @@
         <input id="voice_name" style="font-size: 15px;" type="text" class="text-wrap" placeholder="보이스 명을 입력하세요">
     </div>
 
-    <input type="file" id="fileInput" accept=".mp3" >
+    <input type="file" id="fileInput"  >
     <!-- {% comment %} <button class="upload-btn" onclick=document.getElementById('fileInput').click(); >파일 추가하기</button> {% endcomment %} -->
     
     <button class="solution-btn" id="make_voice_submit" type="button" >보이스 생성하기<i></button>
@@ -23,7 +23,6 @@
 
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script>
-        {% comment %} document.getElementById('fileInput').click(); {% endcomment %}
         $("#make_voice_submit").on('click', () => {
             let voice_name = $('#voice_name').val();
             const input = document.getElementById("fileInput");
@@ -33,27 +32,46 @@
             console.log("Selected file size:", file.size);
             console.log("Selected file type:", file.type);
 
+
+            var formData = new FormData();
+            formData.append('name', voice_name);
+            formData.append('files', file);
+
             $.ajax({
-                url: "https://api.elevenlabs.io/v1/voices/add",
-                method: "POST",
-                dataType: "json",
-                headers: {
-                    "Accept": "application/json",
-                    "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
-                },
-                data : {
-                    'name': voice_name,
-                },
-                files : [
-                    ('files', ('sample1.mp3', open('http://127.0.0.1:8080/'+file.name, 'rb'), 'audio/mp3')),
-                ],
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function(xhr, status, error) {
-                console.log("error:", error);
-                }
+            url: 'https://api.elevenlabs.io/v1/voices/add',
+            type: 'POST',
+            headers: {
+                "Accept": "application/json",
+                "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
+            },
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log(response);
+            }
             });
+            // $.ajax({
+            //     url: "https://api.elevenlabs.io/v1/voices/add",
+            //     method: "POST",
+            //     dataType: "json",
+            //     headers: {
+            //         "Accept": "application/json",
+            //         "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
+            //     },
+            //     data : {
+            //         'name': voice_name,
+            //     },
+            //     files : [
+            //         ('files', ('http://127.0.0.1:8080/'+file.name, open('http://127.0.0.1:8080/'+file.name, 'ko'), 'audio/mp3')),
+            //     ],
+            //     success: function(data) {
+            //         console.log(data);
+            //     },
+            //     error: function(xhr, status, error) {
+            //     console.log("error:", error);
+            //     }
+            // });
         });
             
     </script>
