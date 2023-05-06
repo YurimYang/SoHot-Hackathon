@@ -349,6 +349,9 @@ header {
 .wrap_header {
   height: 70px;
 }
+.logo img{
+  max-height: 70px;
+}
 .wrap_header .logo {
   font-size: 0;
   display: inline-block;

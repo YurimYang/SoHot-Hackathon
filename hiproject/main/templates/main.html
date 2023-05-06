@@ -13,18 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/media_query.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/aos.css' %}" />
-    <title>브랜드캐스트 BRANDCAST</title>
-    <meta property="og:title" content="브랜드캐스트 BRANDCAST">
-    <meta property="og:description" content="실시간 소셜버즈 측정 및 빅데이터 수집 솔루션! 모니터링 이슈 자동알림, 머신러닝 기반 평판분석, 자연어처리 트렌드 분석 및 리포트 제공">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="http://www.brandcast.co.kr">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="브랜드캐스트 BRANDCAST">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="브랜드캐스트 BRANDCAST">
-    <meta name="twitter:url" content="http://www.brandcast.co.kr">
-    <meta name="twitter:image" content="http://www.brandcast.co.kr">
-    <meta name="twitter:description" content="실시간 소셜버즈 측정 및 빅데이터 수집 솔루션! 모니터링 이슈 자동알림, 머신러닝 기반 평판분석, 자연어처리 트렌드 분석 및 리포트 제공">
+    <title>HIS</title>
     <script type="application/ld+json">
       </script>
   </head>
@@ -375,21 +364,17 @@
       });
 
       $.ajax({
-        url: `https://beta.elevenlabs.io/v1/models`,
-        type: "get",
-        headers : {
-          "Accept": "application/json",
+        url: "https://api.elevenlabs.io/v1/voices",
+        method: "GET",
+        dataType: "json",
+        headers: {
           "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
         },
-        contentType: "application/json",
-        datatype: "JSON",
-        success: function (obj) {
-          console.log(obj);
+        success: function(data) {
+          console.log(data);
         },
-        error: function (xhr, status, error) {
-          console.log("error",error);
-          console.log("error",xhr);
-          return
+        error: function(xhr, status, error) {
+          console.log("error:", error);
         }
       });
     </script>
