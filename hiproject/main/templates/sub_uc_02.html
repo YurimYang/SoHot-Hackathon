@@ -76,14 +76,14 @@
                 </a>
               </li>
               <li ><span class = submenu-button></span>
-                  <a href="#">알아보기</a>
+                  <a href="http://127.0.0.1:8000/#">알아보기</a>
                   <ul class = "sub-menu ">
-                      <li class = "service"><a class = "service_a" href="main.html#about" >서비스설명</a></li>
-                      <li class = "func"><a href="main.html#morefeatures">주요기능</a></li>
+                      <li class = "service"><a class = "service_a" href="http://127.0.0.1:8000/#about" >서비스설명</a></li>
+                      <li class = "func"><a href="http://127.0.0.1:8000/#morefeatures">주요기능</a></li>
                   </ul>
               </li>
               <li class="list_gnb_li">
-                <a href="sub_uc_list.html">P.C</a>
+                <a href="http://127.0.0.1:8000/register_img">P.C</a>
               </li>
 
             </ul>
@@ -149,6 +149,12 @@
               <select id="language_selecter" name="language" style="margin-left:20px; width: 260px;">
                 <option value="" selected disabled hidden > 언어를 선택해주세요.</option>
               </select>
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <a>이미지 </a><input id="image_data" type="file" multiple name="image">
+                <a>mp3 파일 </a><input id="file_data" type="file" multiple name="file">
+                <button onclick="">업로드</button>
+              </form>
               <div class="solution-btn-container"><button class="solution-btn" id="make_voice" type="button" >보이스 생성하기<i>
                 <img src="{% static 'images/icon_btn_arrow.png'%}" alt=""/></i>
               </button></div>
@@ -167,6 +173,16 @@
     <script>
       $(function () {
           $('.header_html').load('header.html');
+          var file = getParameter("file");
+          var image = getParameter("images");
+
+          console.log("!!!!!!!!!", file);
+          console.log("!!!!!!!!!", image);
+
+          if (file != "" && image != "")
+          {
+            upload(image, file);
+          }
 
       });
 
@@ -181,13 +197,6 @@
           similarity_boost : 0
         }
       };
-      let DidAjaxData = {
-        source_url: "https://www.brandcast.co.kr/land/back_0506/sub_uc01_li02.png",
-        script: {
-          type: 'audio',
-          audio_url: ""
-        }
-      }
 
       $('#submit').on('click', function(){
         voice_id = $('#voice_selecter option:selected').val();
@@ -209,7 +218,7 @@
           },
           success: function (data) {
             var url = URL.createObjectURL(data);
-            let path = voice_id + "_" + ajaxData.text + ".mp3";
+            let path = voice_id + "_.mp3";
             const downloadLink = document.createElement('a');
             downloadLink.download = path;
             fetch(url)
@@ -219,66 +228,11 @@
                 downloadLink.href = objectURL;
                 downloadLink.click();
               });
-            // $.ajax({
-            //   url: "http://localhost/index.php",
-            //   type: "POST",
-            //   data: {
-            //     command: "ls"
-            //   },
-            //   success: function(response) {
-            //     console.log("Success: " + response);
-            //   },
-            //   error: function(xhr, status, error) {
-            //     console.log("Error: " + error.message);
-            //   }
-            // });
           },
           error: function (xhr, status, error) {
               console.log("error:", xhr);
           }
         });
-
-        // did 
-        $.ajax({
-          url: "https://api.d-id.com/talks",
-          method: "POST",
-          headers: {
-            'accept': 'application/json',
-            'content-type': 'application/json',
-            'authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik53ek53TmV1R3ptcFZTQjNVZ0J4ZyJ9.eyJodHRwczovL2QtaWQuY29tL2ZlYXR1cmVzIjoidGFsa3MiLCJodHRwczovL2QtaWQuY29tL2N4X2xvZ2ljX2lkIjoiIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmQtaWQuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4Mzk3Mjc1MzAzNjI0MDA4MTQ0IiwiYXVkIjpbImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgzMzQ4Mzg5LCJleHAiOjE2ODM0MzQ3ODksImF6cCI6Ikd6ck5JMU9yZTlGTTNFZURSZjNtM3ozVFN3MEpsUllxIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCByZWFkOmN1cnJlbnRfdXNlciB1cGRhdGU6Y3VycmVudF91c2VyX21ldGFkYXRhIG9mZmxpbmVfYWNjZXNzIn0.Ar_55SyksxgK8DyIgspPZmM_r519N6zlvJoc5-EW8cd1OK6jEDEts_xUpM8a16J8TE2m7xGjG1RSyBeTCkghqVfP81s2Q305DFsrKpHJsJibDa-N24p0Yv-3aEMW6wlLWov6abgA_vG8cidnRkUEAbjoxzJ_3TIcDlb22vILphvvnj8D5oiRekoVM1JY7TkUu3KOKdlfeWGT0JXj37_HCVdSarOGrVh4_FPz1snakH7g5sbFJsxBqSu3QLMGmNGj3iVXH1QFWRJhbXRtdeAvr4eS8jHSkuHkrFo8UuRsv4AxSqJwJA-FJNO9T0BsLzgarxzpgqvYXHzA4M0IGwJuiQ'
-          },
-          data: JSON.stringify({
-            source_url: "https://www.brandcast.co.kr/land/back_0506/sub_uc01_li02.png",
-            script: {
-              type: 'audio',
-              audio_url: "https://www.brandcast.co.kr/land/back_0506/AZnzlk1XvdvUeBnXmlld_text.mp3"
-            }
-          }),
-          success: function (data) {
-            did_id = data.id;
-            console.log("talks", data);
-            $.ajax({
-              url: "https://api.d-id.com/talks/"+did_id,
-              method: "GET",
-              headers: {
-                'accept': 'application/json',
-                'content-type': 'application/json',
-                'authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik53ek53TmV1R3ptcFZTQjNVZ0J4ZyJ9.eyJodHRwczovL2QtaWQuY29tL2ZlYXR1cmVzIjoidGFsa3MiLCJodHRwczovL2QtaWQuY29tL2N4X2xvZ2ljX2lkIjoiIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmQtaWQuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4Mzk3Mjc1MzAzNjI0MDA4MTQ0IiwiYXVkIjpbImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgzMzQ4Mzg5LCJleHAiOjE2ODM0MzQ3ODksImF6cCI6Ikd6ck5JMU9yZTlGTTNFZURSZjNtM3ozVFN3MEpsUllxIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCByZWFkOmN1cnJlbnRfdXNlciB1cGRhdGU6Y3VycmVudF91c2VyX21ldGFkYXRhIG9mZmxpbmVfYWNjZXNzIn0.Ar_55SyksxgK8DyIgspPZmM_r519N6zlvJoc5-EW8cd1OK6jEDEts_xUpM8a16J8TE2m7xGjG1RSyBeTCkghqVfP81s2Q305DFsrKpHJsJibDa-N24p0Yv-3aEMW6wlLWov6abgA_vG8cidnRkUEAbjoxzJ_3TIcDlb22vILphvvnj8D5oiRekoVM1JY7TkUu3KOKdlfeWGT0JXj37_HCVdSarOGrVh4_FPz1snakH7g5sbFJsxBqSu3QLMGmNGj3iVXH1QFWRJhbXRtdeAvr4eS8jHSkuHkrFo8UuRsv4AxSqJwJA-FJNO9T0BsLzgarxzpgqvYXHzA4M0IGwJuiQ'
-              },
-              success: function (data) {
-              console.log("talks", data);
-              view_video(data);
-              },
-              error: function (xhr, status, error) {
-                  console.log("error:", xhr);
-              }
-            }); 
-          },
-          error: function (xhr, status, error) {
-              console.log("error:", xhr);
-          }
-        });
-
       })
 
       // lang api call
@@ -319,6 +273,66 @@
         console.log("######");
         window.open("http://127.0.0.1:8000/make_voice_popup", "popup", "width=500,height=500,left=100,top=100");
       })
+
+      function upload(image_name, file_name){
+        // did 
+        $.ajax({
+          url: "https://api.d-id.com/talks",
+          method: "POST",
+          headers: {
+            'content-type': 'application/json',
+            'authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik53ek53TmV1R3ptcFZTQjNVZ0J4ZyJ9.eyJodHRwczovL2QtaWQuY29tL2ZlYXR1cmVzIjoidGFsa3MiLCJodHRwczovL2QtaWQuY29tL2N4X2xvZ2ljX2lkIjoiIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmQtaWQuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4Mzk3Mjc1MzAzNjI0MDA4MTQ0IiwiYXVkIjpbImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgzMzQ4Mzg5LCJleHAiOjE2ODM0MzQ3ODksImF6cCI6Ikd6ck5JMU9yZTlGTTNFZURSZjNtM3ozVFN3MEpsUllxIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCByZWFkOmN1cnJlbnRfdXNlciB1cGRhdGU6Y3VycmVudF91c2VyX21ldGFkYXRhIG9mZmxpbmVfYWNjZXNzIn0.Ar_55SyksxgK8DyIgspPZmM_r519N6zlvJoc5-EW8cd1OK6jEDEts_xUpM8a16J8TE2m7xGjG1RSyBeTCkghqVfP81s2Q305DFsrKpHJsJibDa-N24p0Yv-3aEMW6wlLWov6abgA_vG8cidnRkUEAbjoxzJ_3TIcDlb22vILphvvnj8D5oiRekoVM1JY7TkUu3KOKdlfeWGT0JXj37_HCVdSarOGrVh4_FPz1snakH7g5sbFJsxBqSu3QLMGmNGj3iVXH1QFWRJhbXRtdeAvr4eS8jHSkuHkrFo8UuRsv4AxSqJwJA-FJNO9T0BsLzgarxzpgqvYXHzA4M0IGwJuiQ'
+          },
+          data: JSON.stringify({
+            source_url: "https://hotissue-test-bucket.s3.ap-northeast-2.amazonaws.com/media/"+image_name,
+            script: {
+              type: 'audio',
+              audio_url: "https://hotissue-test-bucket.s3.ap-northeast-2.amazonaws.com/media/musics/"+file_name
+            }
+          }),
+          success: function (data) {
+            did_id = data.id;
+            console.log("talks", data);
+            $.ajax({
+              url: "https://api.d-id.com/talks/"+did_id,
+              method: "GET",
+              headers: {
+                'authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik53ek53TmV1R3ptcFZTQjNVZ0J4ZyJ9.eyJodHRwczovL2QtaWQuY29tL2ZlYXR1cmVzIjoidGFsa3MiLCJodHRwczovL2QtaWQuY29tL2N4X2xvZ2ljX2lkIjoiIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmQtaWQuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4Mzk3Mjc1MzAzNjI0MDA4MTQ0IiwiYXVkIjpbImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgzMzQ4Mzg5LCJleHAiOjE2ODM0MzQ3ODksImF6cCI6Ikd6ck5JMU9yZTlGTTNFZURSZjNtM3ozVFN3MEpsUllxIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCByZWFkOmN1cnJlbnRfdXNlciB1cGRhdGU6Y3VycmVudF91c2VyX21ldGFkYXRhIG9mZmxpbmVfYWNjZXNzIn0.Ar_55SyksxgK8DyIgspPZmM_r519N6zlvJoc5-EW8cd1OK6jEDEts_xUpM8a16J8TE2m7xGjG1RSyBeTCkghqVfP81s2Q305DFsrKpHJsJibDa-N24p0Yv-3aEMW6wlLWov6abgA_vG8cidnRkUEAbjoxzJ_3TIcDlb22vILphvvnj8D5oiRekoVM1JY7TkUu3KOKdlfeWGT0JXj37_HCVdSarOGrVh4_FPz1snakH7g5sbFJsxBqSu3QLMGmNGj3iVXH1QFWRJhbXRtdeAvr4eS8jHSkuHkrFo8UuRsv4AxSqJwJA-FJNO9T0BsLzgarxzpgqvYXHzA4M0IGwJuiQ'
+              },
+              success: function (data) {
+                console.log("talks_id", data);
+                view_video(data);
+              },
+              error: function (xhr, status, error) {
+                  console.log("error:", xhr);
+              }
+            }); 
+          },
+          error: function (xhr, status, error) {
+              console.log("error:", xhr);
+          }
+        });
+      
+       }
+      function view_video(data)
+      {
+        console.log("!!!!!!!!!!!!!",  data.result_url);
+        window.open = data.result_url;
+        let data_name = data.result_url.split('Expires=')[1].split('&')[0];
+        const parentNode = document.getElementById('res_video');
+
+        parentNode.innerHTML = `
+          <i>나의 입모양 AI 아바타</i>
+          <video src="http://127.0.0.1:8080/`+data_name+`.mp4" auto controls width="500px">
+          이 브라우저에서 지원하지 않는 영상입니다.
+          </video>`;
+      }
+      function getParameter(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+              results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
     </script>
   </body>
 </html>

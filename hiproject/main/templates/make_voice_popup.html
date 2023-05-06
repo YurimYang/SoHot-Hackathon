@@ -12,11 +12,11 @@
         <hr/>
     <div class = "popup-upload-wrap">
         <a class = "popup-name"> name </a>
-        <input id="voice_name" style="font-size: 15px;" type="text" class="text-wrap" placeholder="파일 명을 입력하세요">
+        <input id="voice_name" style="font-size: 15px;" type="text" class="text-wrap" placeholder="보이스 명을 입력하세요">
     </div>
 
     <input type="file" id="fileInput" accept=".mp3" >
-    {% comment %} <button class="upload-btn" onclick=document.getElementById('fileInput').click(); >파일 추가하기</button> {% endcomment %}
+    <!-- {% comment %} <button class="upload-btn" onclick=document.getElementById('fileInput').click(); >파일 추가하기</button> {% endcomment %} -->
     
     <button class="solution-btn" id="make_voice_submit" type="button" >보이스 생성하기<i></button>
     </div>
@@ -29,7 +29,7 @@
             const input = document.getElementById("fileInput");
             const file = input.files[0];
 
-            console.log("Selected file:", 'http://127.0.0.1:8081/'+file.name);
+            console.log("Selected file:", 'http://127.0.0.1:8080/'+file.name);
             console.log("Selected file size:", file.size);
             console.log("Selected file type:", file.type);
 
@@ -45,7 +45,7 @@
                     'name': voice_name,
                 },
                 files : [
-                    ('files', ('sample1.mp3', open('http://127.0.0.1:8081/'+file.name, 'rb'), 'audio/mp3')),
+                    ('files', ('sample1.mp3', open('http://127.0.0.1:8080/'+file.name, 'rb'), 'audio/mp3')),
                 ],
                 success: function(data) {
                     console.log(data);

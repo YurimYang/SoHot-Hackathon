@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from main.models import Picture, Song
+import time
 
 
 # Create your views here.
 def main(request):
     return render(request, 'main.html')
 
-def sub_uc_02(request):
-    return render(request, 'sub_uc_02.html')
+# def sub_uc_02(request):
+#     return render(request, 'sub_uc_02.html')
 
 def make_voice_popup(request):
     return render(request, 'make_voice_popup.html')
@@ -15,28 +16,33 @@ def make_voice_popup(request):
 
 def register_img(request):
     if request.method == 'GET':
-        return render(request, 'register_img.html')
+        return render(request, 'sub_uc_02.html')
     elif request.method == 'POST':
         images = request.FILES.getlist("image")
         for image in images:
             picture = Picture()
             picture.img = image
             picture.save()
-
-        return redirect('/')
-    
-
-def register_vid(request):
-    if request.method == 'GET':
-        return render(request, 'register_vid.html')
-    elif request.method == 'POST':
+            
         files = request.FILES.getlist("file")
         for file in files:
             song = Song()
             song.file = file
             song.save()
+        return redirect(f'/register_img?images={images[0].name}&file={files[0].name}')
+    
 
-        return redirect('/')
+# def register_vid(request):
+#     if request.method == 'GET':
+#         return render(request, 'sub_uc_02.html')
+#     elif request.method == 'POST':
+#         files = request.FILES.getlist("file")
+#         for file in files:
+#             song = Song()
+#             song.file = file
+#             song.save()
+
+#         return redirect('/')
 
 
 

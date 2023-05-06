@@ -18,24 +18,6 @@ function voice_list(data)
     }
 }
 
-function view_video(data)
-{
-    const parentNode = document.getElementById('res_video');
-    for(value in data)
-    {
-        parentNode.innerHTML = `
-        <video controls>
-        <source src="https://example.com/videos/myvideo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-        </video>
-        
-        <i>나의 입모양 AI 아바타</i>
-                <video src="http://127.0.0.1:8000/static/images/1683362367569.mp4" auto controls width="500px">
-                이 브라우저에서 지원하지 않는 영상입니다.
-                </video>`;
-    }
-}
-
 function downloadMP3(url) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
