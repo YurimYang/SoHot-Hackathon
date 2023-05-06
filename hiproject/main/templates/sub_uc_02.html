@@ -85,18 +85,7 @@
               <li class="list_gnb_li">
                 <a href="sub_uc_list.html">P.C</a>
               </li>
-              <li class="list_gnb_li">
-                <a class = "temporary">PRICE</a>
-              </li>
-              <li class="list_gnb_li">
-                <a href="sub_faq.html">FAQ</a>
-              </li>
-              <li class="list_gnb_li">
-                <a href="sub_contact.html">CONTACT</a>
-              </li>
-              <li class="mobile_li login_btn_m">
-                <a href="#">CONSOLE</a>
-              </li>
+
             </ul>
           </div>
         </nav>
@@ -109,9 +98,7 @@
               <rect y="65" width="70" height="2"></rect>
             </svg>
           </i>
-          <ul>
-            <li class="login_btn"><button type="button" onclick="location.href='https://console.brandcast.co.kr'"><a>CONSOLE</a></button></li>
-          </ul>
+
         </div>
       </div>
     </div>
@@ -155,16 +142,16 @@
             <li class="uc_main_detail uc_main_detail01">
               <p><b>원하는 보이스와 언어를 선택하세요</b></p>
               <div className = "selection-wrap">
-              <select id="voice_selecter" name="voice">
+              <select id="voice_selecter" name="voice" style=" width: 260px;">
                 <option value="" selected disabled hidden > 보이스를 선택해주세요.</option>
               </select>
 
-              <select id="language_selecter" name="language">
+              <select id="language_selecter" name="language" style="margin-left:20px; width: 260px;">
                 <option value="" selected disabled hidden > 언어를 선택해주세요.</option>
               </select>
-              <button class="solution-btn" id="make_voice" type="button" >보이스 생성하기<i>
+              <div class="solution-btn-container"><button class="solution-btn" id="make_voice" type="button" >보이스 생성하기<i>
                 <img src="{% static 'images/icon_btn_arrow.png'%}" alt=""/></i>
-              </button>
+              </button></div>
             </div>
             <input id="contents" style="font-size: 15px;" type="text" class="text-wrap" placeholder="Type something here">
               <div class="solution-btn-container"><button class="solution-btn" id="submit" type="button" >솔루션 받기<i>
