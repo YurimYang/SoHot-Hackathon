@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* sub_abus 회사소개 */
+.sub_abus_page h2 img{
+  vertical-align: bottom;
+  margin-left:5px;
+}
+.about_us_box {
+  display: flex;
+  justify-content:space-around;
+  width:100%;
+  padding: 50px;
+  -webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+-ms-border-radius: 30px;
+border-radius: 30px;
+box-shadow: 0 8px 20px 0 rgb(193 202 223 / 60%);
+}
+.about_us_box li{
+  text-align: center;
+  color:#1e3252;
+}
+.about_us_box h4{
+  margin:1rem 0;
+}
+.sec_row02{
+  padding-bottom: var(--space120);
+}
+.sec_row02 h2 {
+  text-align: center;
+  line-height: 1;
+}

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+# from storages.backends.s3boto3 import S3Boto3Storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AWS_REGION= 'ap-northeast-2'
+AWS_STORAGE_BUCKET_NAME= 'hotissue-test-bucket'
+AWS_ACCESS_KEY_ID= 'AKIAVHE3WWLUYQODO4TE'
+AWS_SECRET_ACCESS_KEY= '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'
+
+
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_HOST = 's3.%s.amazonaws.com' % AWS_REGION
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+
+# Media Setting
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'hiproject.asset_storage.MediaStorage'
+
+# Root Setting
+#MEDIA_ROOT = '%s/media' % STORAGE_PATH
