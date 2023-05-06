@@ -163,7 +163,14 @@
 .uc_main_detail01 p {
   max-width: 550px;
 }
-.uc_main_detail01 button {
+
+.solution-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.solution-btn {
   font-size: var(--main-font-size);
   font-weight: 500;
   color: #fff;
@@ -254,4 +261,7 @@
     padding-left: 10px;
     background-color: rgb(255, 255, 255);
   
+}
+#contents{
+  height: 200px;
 }

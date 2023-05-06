@@ -138,13 +138,6 @@
         </div>
       </section>
       <section class="sec_row01">
-        <div class="content_pc">
-          <nav class="sub_nav">
-            <div class="golist_btn">
-              <a href="sub_uc_list.html">목록 전체보기</a>
-            </div>
-          </nav>
-        </div>
       </section>
       <section class="sec_row02">
         <div class="content_pc">
@@ -156,124 +149,24 @@
             </li>
             <li class="uc_main_detail uc_main_detail01">
               <p><b>원하는 보이스와 언어를 선택하세요</b></p>
-
               <div className = "selection-wrap">
-              <select name="voice">
+              <select id="voice_selecter" name="voice">
                 <option value="" selected disabled hidden > 보이스를 선택해주세요.</option>
-                <option> 혜인</option>
-                <option> 유림</option>
-                <option> 세민</option>
-                <option> 은주</option>
-                <option> kill현영교수님 </option>
               </select>
 
-              <select name="language">
+              <select id="language_selecter" name="language">
                 <option value="" selected disabled hidden > 언어를 선택해주세요.</option>
-                <option> English</option>
-                <option> German </option>
-                <option> Polish </option>
-                <option> Spanish </option>
-                <option> Italian </option>
-                <option> French Portuguese</option>
               </select>
             </div>
-
-            <input type="text" class="text-wrap" placeholder="Type something here">
-
-
-              <p>
-                진짜 개에반데
-              </p>
-              <p>
-                개에반데
-              </p>
-              <p>
-                sdf
-              </p>
-              <button type="button" onclick="location.href='./sub_contact.html'">
-                솔루션 받기<i
-                  ><img src="{% static 'images/icon_btn_arrow.png'%}" alt=""
-                /></i>
-              </button>
+            <input id="contents" type="text" class="text-wrap" placeholder="Type something here">
+              <div class="solution-btn-container"><button class="solution-btn" id="submit" type="button" >솔루션 받기<i>
+                <img src="{% static 'images/icon_btn_arrow.png'%}" alt=""/></i>
+              </button></div>
             </li>
           </ul>
-          <div class="sec_detail_row uc_main_detail uc_main_detail02 clear">
-            <div class="part left">
-              <h2>더 효과적인 <strong>검색 키워드는?</strong></h2>
-              <p>
-                우리 브랜드가 더 많이 검색되게 하려면 어떻게 해야할까요? 어떤
-                채널에서 어떤 키워드가 노출 점유율이 높을까요?<br />
-                <b
-                  >이 질문에 대한 답을 찾으면 성장이 훨씬 쉬워집니다.<br />
-                  검색 점유율을 정확히 알고, 방향을 설정하세요.
-                </b>
-              </p>
-            </div>
-            <div class="part right">
-              <img src="{% static 'images/sub_uc_detail01_row02_img01_02.jpg '%}" alt="" />
-            </div>
-          </div>
-          <ul class="sec_detail_row row03 clear">
-            <li class="uc_main_detail uc_main_detail03">
-              <div>
-                <h2>
-                  <b>리뷰 추이</b>를 알면 <br />
-                  <b>큰 그림</b>이 보이니까
-                </h2>
-                <p>
-                  -새로운 메뉴를 출시한 날, 방문객 평점이 최고치를 갱신했네요!
-                  -오픈 시간을 앞당기고 나서 리뷰가 두 배 많아졌어요!<br />
-                </p>
-                <br />
-                <p>
-                  <b
-                    >브랜드가 나아가야 할 방향을 고민하고 있다면 브랜드 캐스트의
-                    리뷰 추이 그래프를 활용해보세요.
-                  </b>
-                  사람들이 남긴 리뷰가 곧 브랜드의 나침반이니까요! 고객들은
-                  언제, 어떤 이유로 우리 브랜드를 칭찬했을까요? 그래프로 평판을
-                  한눈에 파악하고, 큰 그림을 그려보세요.
-                </p>
-              </div>
-              <img src="{% static 'images/sub_uc_detail01_row02_img02_02.jpg' %} " alt="" />
-            </li>
-            <li class="uc_main_detail uc_main_detail04">
-              <div>
-                <h2>
-                  프랜차이즈 브랜드엔 필수!
-                  <strong>실시간 부정어 관리</strong>
-                </h2>
-                <p>
-                  프랜차이즈 F&B 브랜드에겐 언제든 예상치 못한 위기가 찾아올 수
-                  있습니다. 음식 속 이물질, 고객과의 갈등 … 한 매장의 논란이
-                  브랜드 전체에 영향을 미치는 만큼 선제적이고 지속적인
-                  위기관리가 필수입니다.
-                  <b
-                    >브랜드캐스트가 온라인 세상의 모든 부정어를 24시간 콕 콕
-                    잡아드립니다.</b
-                  >
-                  위기를 빠르게 관리하세요!
-                </p>
-              </div>
-              <img src="images/sub_uc_detail01_row02_img03_02.jpg" alt="" />
-            </li>
-          </ul>
-          <div class="sec_detail_row uc_main_detail row04">
-            <img src="{% static 'images/sub_uc_detail02_row02_img04.png'%}" alt="" />
-            <h3>우리 브랜드가 나아가야 할 방향은?</h3>
-            <button type="button" onclick="location.href='./sub_contact.html'">
-              솔루션 받기<i
-                ><img src="{% static 'images/icon_btn_arrow.png' %}" alt=""
-              /></i>
-            </button>
-          </div>
-          <div class="golist_btn">
-            <a href="sub_uc_list.html">목록 전체보기</a>
-          </div>
         </div>
       </section>
     </main>
-
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/common.js' %}"></script>
     <script>
@@ -281,6 +174,47 @@
           $('.header_html').load('header.html');
 
       });
+
+      var audio;
+      let voice_id;
+      let ajaxData= {
+        model_id: "eleven_multilingual_v1",
+        text: "",
+        voice_settings : {
+          stability : 0,
+          similarity_boost : 0
+        }
+      };
+
+      $('#submit').on('click', function(){
+        voice_id = $('#voice_selecter option:selected').val();
+        ajaxData.text = $('#contents').val();
+        console.log("ajaxData", ajaxData);
+
+        $.ajax({
+          url: "https://api.elevenlabs.io/v1/text-to-speech/" + voice_id,
+          method: "POST",
+          headers: {
+              "Accept": "audio/mpeg",
+              "Content-Type": "application/json",
+              "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
+          },
+          data: JSON.stringify(ajaxData),
+          xhrFields: {
+              responseType: 'blob'
+          },
+          success: function (data) {
+              var url = URL.createObjectURL(data);
+              audio = new Audio(url);
+              audio.play();
+          },
+          error: function (xhr, status, error) {
+              console.log("error:", xhr);
+          }
+        });
+      })
+
+      // lang api call
       $.ajax({
         url: "https://api.elevenlabs.io/v1/models",
         method: "GET",
@@ -297,6 +231,7 @@
         }
       });
 
+      // voices api call
       $.ajax({
         url: "https://api.elevenlabs.io/v1/voices",
         method: "GET",
@@ -305,7 +240,8 @@
           "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
         },
         success: function(data) {
-          console.log("voices: ",data);
+          let voices = data.voices;
+          voice_list(voices);
         },
         error: function(xhr, status, error) {
           console.log("error:", error);
