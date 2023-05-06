@@ -56,7 +56,7 @@
     <div class="wrap_header">
       <h1 class="logo">
         <!-- <a href="index.html" -->
-        <a href="main.html"
+        <a href="http://127.0.0.1:8000/"
           ><img src="{% static 'images/logo_black.png' %}" alt="Brand cast"
         /></a>
       </h1>
@@ -142,10 +142,15 @@
       <section class="sec_row02">
         <div class="content_pc">
           <ul class="sec_detail_row row01 clear">
-            <li class="uc_main_img">
+            <li id="res_video" class="uc_main_img">
               <i>나의 입모양 AI 아바타</i>
               <!-- 아바타 동영상 재생  -->
-              <img src="{% static 'images/sub_uc01_li02.png'%}" alt="" />
+         
+              <!-- <video autoplay controls muted>
+              <source src="/Users/kimsemin/Downloads/1683362367569.mp4" type="video/mp4">
+              video
+              </video> -->
+              <!-- <img src="{% static 'images/sub_uc01_li02.png'%}" alt="" /> -->
             </li>
             <li class="uc_main_detail uc_main_detail01">
               <p><b>원하는 보이스와 언어를 선택하세요</b></p>
@@ -158,7 +163,7 @@
                 <option value="" selected disabled hidden > 언어를 선택해주세요.</option>
               </select>
             </div>
-            <input id="contents" type="text" class="text-wrap" placeholder="Type something here">
+            <input id="contents" style="font-size: 15px;" type="text" class="text-wrap" placeholder="Type something here">
               <div class="solution-btn-container"><button class="solution-btn" id="submit" type="button" >솔루션 받기<i>
                 <img src="{% static 'images/icon_btn_arrow.png'%}" alt=""/></i>
               </button></div>
@@ -177,6 +182,7 @@
 
       var audio;
       let voice_id;
+      let did_id;
       let ajaxData= {
         model_id: "eleven_multilingual_v1",
         text: "",
@@ -185,12 +191,20 @@
           similarity_boost : 0
         }
       };
+      let DidAjaxData = {
+        source_url: "https://www.brandcast.co.kr/land/back_0506/sub_uc01_li02.png",
+        script: {
+          type: 'audio',
+          audio_url: ""
+        }
+      }
 
       $('#submit').on('click', function(){
         voice_id = $('#voice_selecter option:selected').val();
         ajaxData.text = $('#contents').val();
         console.log("ajaxData", ajaxData);
 
+        // text to mp3
         $.ajax({
           url: "https://api.elevenlabs.io/v1/text-to-speech/" + voice_id,
           method: "POST",
@@ -204,14 +218,79 @@
               responseType: 'blob'
           },
           success: function (data) {
-              var url = URL.createObjectURL(data);
-              audio = new Audio(url);
-              audio.play();
+            var url = URL.createObjectURL(data);
+            let path = voice_id + "_" + ajaxData.text + ".mp3";
+            const downloadLink = document.createElement('a');
+            downloadLink.download = path;
+            fetch(url)
+              .then(response => response.blob())
+              .then(blob => {
+                const objectURL = URL.createObjectURL(blob);
+                downloadLink.href = objectURL;
+                downloadLink.click();
+              });
+            
+            // $.ajax({
+            //   url: "http://localhost/index.php",
+            //   type: "POST",
+            //   data: {
+            //     command: "ls"
+            //   },
+            //   success: function(response) {
+            //     console.log("Success: " + response);
+            //   },
+            //   error: function(xhr, status, error) {
+            //     console.log("Error: " + error.message);
+            //   }
+            // });
+            // shell.exec('scp ~/Downloads/'+path+' -P 20022 root@brandcast.co.kr:/root/html/brandcast/working/land/back_0506')
           },
           error: function (xhr, status, error) {
               console.log("error:", xhr);
           }
         });
+
+        // did 
+        $.ajax({
+          url: "https://api.d-id.com/talks",
+          method: "POST",
+          headers: {
+            'accept': 'application/json',
+            'content-type': 'application/json',
+            'authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik53ek53TmV1R3ptcFZTQjNVZ0J4ZyJ9.eyJodHRwczovL2QtaWQuY29tL2ZlYXR1cmVzIjoidGFsa3MiLCJodHRwczovL2QtaWQuY29tL2N4X2xvZ2ljX2lkIjoiIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmQtaWQuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4Mzk3Mjc1MzAzNjI0MDA4MTQ0IiwiYXVkIjpbImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgzMzQ4Mzg5LCJleHAiOjE2ODM0MzQ3ODksImF6cCI6Ikd6ck5JMU9yZTlGTTNFZURSZjNtM3ozVFN3MEpsUllxIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCByZWFkOmN1cnJlbnRfdXNlciB1cGRhdGU6Y3VycmVudF91c2VyX21ldGFkYXRhIG9mZmxpbmVfYWNjZXNzIn0.Ar_55SyksxgK8DyIgspPZmM_r519N6zlvJoc5-EW8cd1OK6jEDEts_xUpM8a16J8TE2m7xGjG1RSyBeTCkghqVfP81s2Q305DFsrKpHJsJibDa-N24p0Yv-3aEMW6wlLWov6abgA_vG8cidnRkUEAbjoxzJ_3TIcDlb22vILphvvnj8D5oiRekoVM1JY7TkUu3KOKdlfeWGT0JXj37_HCVdSarOGrVh4_FPz1snakH7g5sbFJsxBqSu3QLMGmNGj3iVXH1QFWRJhbXRtdeAvr4eS8jHSkuHkrFo8UuRsv4AxSqJwJA-FJNO9T0BsLzgarxzpgqvYXHzA4M0IGwJuiQ'
+          },
+          data: JSON.stringify({
+            source_url: "https://www.brandcast.co.kr/land/back_0506/sub_uc01_li02.png",
+            script: {
+              type: 'audio',
+              audio_url: "https://www.brandcast.co.kr/land/back_0506/AZnzlk1XvdvUeBnXmlld_text.mp3"
+            }
+          }),
+          success: function (data) {
+            did_id = data.id;
+            console.log("talks", data);
+            $.ajax({
+              url: "https://api.d-id.com/talks/"+did_id,
+              method: "GET",
+              headers: {
+                'accept': 'application/json',
+                'content-type': 'application/json',
+                'authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik53ek53TmV1R3ptcFZTQjNVZ0J4ZyJ9.eyJodHRwczovL2QtaWQuY29tL2ZlYXR1cmVzIjoidGFsa3MiLCJodHRwczovL2QtaWQuY29tL2N4X2xvZ2ljX2lkIjoiIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmQtaWQuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE4Mzk3Mjc1MzAzNjI0MDA4MTQ0IiwiYXVkIjpbImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImh0dHBzOi8vZC1pZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjgzMzQ4Mzg5LCJleHAiOjE2ODM0MzQ3ODksImF6cCI6Ikd6ck5JMU9yZTlGTTNFZURSZjNtM3ozVFN3MEpsUllxIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCByZWFkOmN1cnJlbnRfdXNlciB1cGRhdGU6Y3VycmVudF91c2VyX21ldGFkYXRhIG9mZmxpbmVfYWNjZXNzIn0.Ar_55SyksxgK8DyIgspPZmM_r519N6zlvJoc5-EW8cd1OK6jEDEts_xUpM8a16J8TE2m7xGjG1RSyBeTCkghqVfP81s2Q305DFsrKpHJsJibDa-N24p0Yv-3aEMW6wlLWov6abgA_vG8cidnRkUEAbjoxzJ_3TIcDlb22vILphvvnj8D5oiRekoVM1JY7TkUu3KOKdlfeWGT0JXj37_HCVdSarOGrVh4_FPz1snakH7g5sbFJsxBqSu3QLMGmNGj3iVXH1QFWRJhbXRtdeAvr4eS8jHSkuHkrFo8UuRsv4AxSqJwJA-FJNO9T0BsLzgarxzpgqvYXHzA4M0IGwJuiQ'
+              },
+              success: function (data) {
+              console.log("talks", data);
+              view_video(data);
+              },
+              error: function (xhr, status, error) {
+                  console.log("error:", xhr);
+              }
+            }); 
+          },
+          error: function (xhr, status, error) {
+              console.log("error:", xhr);
+          }
+        });
+
       })
 
       // lang api call
