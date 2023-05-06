@@ -1,3 +1,4 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -5,13 +6,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/default.css" />
-    <link rel="stylesheet" type="text/css" href="css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="css/font_space.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/media_query.css" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font_space.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media_query.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aos.css' %}" />
     <title>브랜드캐스트 BRANDCAST</title>
     <meta property="og:title" content="브랜드캐스트 BRANDCAST">
     <meta property="og:description" content="실시간 소셜버즈 측정 및 빅데이터 수집 솔루션! 모니터링 이슈 자동알림, 머신러닝 기반 평판분석, 자연어처리 트렌드 분석 및 리포트 제공">
@@ -37,14 +38,14 @@
   -->
   
       <a href="https://drive.google.com/file/d/1oEvYj0_j4Nvai-f4hTqrUlQFDnxREhYM/view?usp=share_link" target="_blank">
-      <img class="banner" src="images/brandcast_banner.gif"/>
+      <img class="banner" src="{% static 'images/brandcast_banner.gif' %}"/>
       </a>
     </div>
     <div class="wrap_header">
       <h1 class="logo">
         <!-- <a href="index.html" -->
         <a href="main.html"
-          ><img src="images/logo_black.png" alt="Brand cast"
+          ><img src="{% static 'images/logo_black.png' %}" alt="Brand cast"
         /></a>
       </h1>
        <!-- 220801 .header_right div태그 없애면 중앙 내비게이션으로 되돌릴수 있음-->
@@ -56,10 +57,10 @@
             <ul class="list_gnb_ul">
               <li class="mobile_li mobile_li_close clear">
                 <a href="#" class="logo_m_nav">
-                  <img src="images/logo_gray.png" alt="" />
+                  <img src="{% static 'images/logo_gray.png' %}" alt="" />
                 </a>
                 <a href="#" class="close_btn">
-                  <img src="images/icon_btn_close.png" alt="" />
+                  <img src="{% static 'images/icon_btn_close.png' %}" alt="" />
                 </a>
               </li>
               <li ><span class = submenu-button></span>
@@ -103,9 +104,9 @@
       </div>
     </div>
   </header>
-  <script src="js/common.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <script src="js/menu.js"></script>
+  <script src="{% static 'js/common.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+  <script src="{% static 'images/js/menu.js' %}"></script>
   </div>
     <main>
       <section class="main_info_row01 row01">
@@ -171,7 +172,7 @@
                   원하는 채널 설계와 분석 스케쥴 설계가 주문<br>
                   맞춤형으로 가능합니다.
                 </p>
-                <img src="images/main_row03_icon.png" alt="" />
+                <img src="{% static 'images/main_row03_icon.png' %}" alt="" />
               </li>
               <li data-aos="fade-down"  data-aos-delay="150">
                 <h4>
@@ -185,7 +186,7 @@
                   문서 자동 분류를 위한 <br>
                   맞춤형 툴 설계를 제공합니다.
                 </p>
-                <img src="images/main_row03_icon02.png" alt="" />
+                <img src="{% static 'images/main_row03_icon02.png' %}" alt="" />
               </li>
               <li data-aos="fade-down"  data-aos-delay="250">
                 <h4>
@@ -197,7 +198,7 @@
                     솔루션 장애가 발생할 시,<br>
                     실시간으로 빠른 상담이 가능합니다.
                   </p>
-                  <img src="images/main_row03_icon03.png" alt="" />
+                  <img src="{% static 'images/main_row03_icon03.png' %}" alt="" />
                 </li>
               </li>
             </ul>
@@ -226,15 +227,15 @@
                   </div>
                 </div>
                 <ul class="lg-50 right">
-                  <li data-aos="zoom-in" data-aos-delay="250"><img src="images/main_row04_img01.png" alt=""></li>
-                    <li data-aos="zoom-in" data-aos-delay="300"><img src="images/main_row04_img02.png" alt=""></li>
+                  <li data-aos="zoom-in" data-aos-delay="250"><img src="{% static 'images/main_row04_img01.png' %}" alt=""></li>
+                    <li data-aos="zoom-in" data-aos-delay="300"><img src="{% static 'images/main_row04_img02.png' %}" alt=""></li>
                 </ul>
               </div>
           </div>
           <div class="row02_con con02">
             <div class="row clear">
                 <ul class="lg-50 left">
-                  <li data-aos="zoom-in" data-aos-delay="250"><img src="images/main_row05_img01.png" alt=""></li>
+                  <li data-aos="zoom-in" data-aos-delay="250"><img src="{% static 'images/main_row05_img01.png' %}" alt=""></li>
                 </ul>
                 <div class="lg-50 right">
                   <div class="text_wrap">
@@ -274,16 +275,16 @@
                   </div>
                 </div>
                 <ul class="lg-50 right">
-                  <li data-aos="zoom-in" data-aos-delay="250"><img src="images/main_row06_img02.png" alt=""></li>
-                    <li data-aos="zoom-in" data-aos-delay="300"><img src="images/main_row06_img01.png" alt=""></li>
+                  <li data-aos="zoom-in" data-aos-delay="250"><img src="{% static 'images/main_row06_img02.png' %}" alt=""></li>
+                    <li data-aos="zoom-in" data-aos-delay="300"><img src="{% static 'images/main_row06_img01.png' %}" alt=""></li>
                 </ul>
               </div>
           </div>
           <div class="row02_con con04">
             <div class="row clear">
                 <ul class="lg-50 left">
-                  <li data-aos="zoom-in"data-aos-delay="250"><img src="images/main_row07_img01.png" alt=""></li>
-                  <li data-aos="zoom-in" data-aos-delay="300"><img src="images/main_row07_img02.png" alt=""></li>
+                  <li data-aos="zoom-in"data-aos-delay="250"><img src="{% static 'images/main_row07_img01.png' %}" alt=""></li>
+                  <li data-aos="zoom-in" data-aos-delay="300"><img src="{% static 'images/main_row07_img02.png' %}" alt=""></li>
                 </ul>
                 <div class="lg-50 right">
                   <div class="text_wrap">
@@ -314,27 +315,27 @@
         <div class="row03_box main_content_w1200">
           <ul class="clear">
             <li data-aos="fade-up">
-              <img src="images/main_row08_icon01.png" alt="">
+              <img src="{% static 'images/main_row08_icon01.png' %}" alt="">
               <p>포털 사이트 <b>버즈 제공</b></p>
             </li>
             <li data-aos="fade-up">
-              <img src="images/main_row08_icon02.png" alt="">
+              <img src="{% static 'images/main_row08_icon02.png' %}" alt="">
               <p>소셜 버즈 <b>추이</b></p>
             </li>
             <li data-aos="fade-up">
-              <img src="images/main_row08_icon03.png" alt="">
+              <img src="{% static 'images/main_row08_icon03.png' %}" alt="">
               <p>SNS/커뮤니티 <b>모니터링</b></p>
             </li>
             <li data-aos="fade-up">
-              <img src="images/main_row08_icon04.png" alt="">
+              <img src="{% static 'images/main_row08_icon04.png' %}" alt="">
               <p>AI기반 <b>감성/이슈 분석</b></p>
             </li>
             <li data-aos="fade-up">
-              <img src="images/main_row08_icon05.png" alt="">
+              <img src="{% static 'images/main_row08_icon05.png' %}" alt="">
               <p>NLP기반 <b>개체분류 및 추출</b></p>
             </li>
             <li data-aos="fade-up">
-              <img src="images/main_row08_icon06.png" alt="">
+              <img src="{% static 'images/main_row08_icon06.png' %}" alt="">
               <p><b>인사이트</b> 제공</p>
             </li>
           </ul>
@@ -344,7 +345,7 @@
     <footer class="main_content_w1200">
       <ul class="footer_nav clear">
         <li>
-          <img src="images/logo_gray.png" alt="bitlworks" />
+          <img src="{% static 'images/logo_gray.png' %}" alt="bitlworks" />
           <span><a href="sub_abus.html">회사소개</a></span>
         </li>
         <li>
@@ -362,12 +363,12 @@
       </ul>
       <p class="txt_copyright">© BitLworks Inc. 2022. All Rights Reserved.</p>
     </footer>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/plug.js"></script>
-    <script src="js/menu.js"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/plug.js' %}"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
     <script>
       AOS.init({
         easing: "ease-in-out-sine",
