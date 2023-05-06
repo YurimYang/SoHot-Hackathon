@@ -27,7 +27,7 @@
   background: var(--main-color);
   margin-top: 0px;
   padding: 16px 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .sub_uc_page .sec_row01 {
   padding: 100px 0 var(--space120);

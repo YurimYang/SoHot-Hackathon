@@ -1,14 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/default.css" />
-    <link rel="stylesheet" type="text/css" href="css/font_space.css" />
-    <link rel="stylesheet" type="text/css" href="css/sub_common.css" />
-    <link rel="stylesheet" type="text/css" href="css/sub_uc.css" />
-    <link rel="stylesheet" type="text/css" href="css/media_query.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font_space.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sub_common.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sub_uc.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media_query.css' %}" />
     <title>브랜드캐스트 BRANDCAST</title>
     <meta property="og:title" content="브랜드캐스트 BRANDCAST" />
     <meta
@@ -21,8 +23,8 @@
     <meta property="og:site_name" content="브랜드캐스트 BRANDCAST" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="브랜드캐스트 BRANDCAST" />
-    <meta name="twitter:url" content="http://www.brandcast.co.kr" />
-    <meta name="twitter:image" content="http://www.brandcast.co.kr" />
+    <meta name="twitter:url" content='http://www.brandcast.co.kr'/>
+    <meta name="twitter:image" content='http://www.brandcast.co.kr' />
     <meta
       name="twitter:description"
       content="실시간 소셜버즈 측정 및 빅데이터 수집 솔루션! 모니터링 이슈 자동알림, 머신러닝 기반 평판분석, 자연어처리 트렌드 분석 및 리포트 제공"
@@ -49,15 +51,13 @@
     <div class="banner " >
   -->
   
-      <a href="https://drive.google.com/file/d/1oEvYj0_j4Nvai-f4hTqrUlQFDnxREhYM/view?usp=share_link" target="_blank">
-      <img class="banner" src="images/brandcast_banner.gif"/>
-      </a>
+
     </div>
     <div class="wrap_header">
       <h1 class="logo">
         <!-- <a href="index.html" -->
         <a href="main.html"
-          ><img src="images/logo_black.png" alt="Brand cast"
+          ><img src="{% static 'images/logo_black.png' %}" alt="Brand cast"
         /></a>
       </h1>
        <!-- 220801 .header_right div태그 없애면 중앙 내비게이션으로 되돌릴수 있음-->
@@ -69,10 +69,10 @@
             <ul class="list_gnb_ul">
               <li class="mobile_li mobile_li_close clear">
                 <a href="#" class="logo_m_nav">
-                  <img src="images/logo_gray.png" alt="" />
+                  <img src="{% static 'images/logo_gray.png' %}" alt="" />
                 </a>
                 <a href="#" class="close_btn">
-                  <img src="images/icon_btn_close.png" alt="" />
+                  <img src="{% static 'images/icon_btn_close.png ' %}" alt="" />
                 </a>
               </li>
               <li ><span class = submenu-button></span>
@@ -83,7 +83,7 @@
                   </ul>
               </li>
               <li class="list_gnb_li">
-                <a href="sub_uc_list.html">USE CASE</a>
+                <a href="sub_uc_list.html">P.C</a>
               </li>
               <li class="list_gnb_li">
                 <a class = "temporary">PRICE</a>
@@ -125,13 +125,14 @@
         <div class="content_pc">
           <h1>USE CASE</h1>
           <i class="tit_deco01">
-            <img src="images/title_line_img02.png" alt="" />
+            <img src="{% static 'images/title_line_img02.png'%}" alt="" />
+            
           </i>
           <i class="tit_deco02">
-            <img src="images/title_line_img03.png" alt="" />
+            <img src="{% static 'images/title_line_img03.png '%} " alt="" />
           </i>
           <i class="tit_deco03">
-            <img src="images/title_line_img04.png" alt="" />
+            <img src="{% static 'images/title_line_img04.png'%}" alt="" />
           </i>
         </div>
       </section>
@@ -148,22 +149,32 @@
         <div class="content_pc">
           <ul class="sec_detail_row row01 clear">
             <li class="uc_main_img">
-              <i>프랜차이즈-먹거리</i>
-              <img src="images/sub_uc01_li02.png" alt="" />
+              <i>나의 입모양 AI 아바타</i>
+              <!-- 아바타 동영상 재생  -->
+              <img src="{% static 'images/sub_uc01_li02.png'%}" alt="" />
             </li>
             <li class="uc_main_detail uc_main_detail01">
-              <h2>성장하는 프랜차이즈에겐 필수.</h2>
+              <p><b>원하는 보이스, 원하는 언어를 선택하세요</b></p>
+              <select name="language">
+                <option> English</option>
+                <option> German </option>
+                <option> Polish </option>
+                <option> Spanish </option>
+                <option> Italian </option>
+                <option> French Portuguese</option>
+              </select>
               <p>
-                전국의 곳곳의 가맹점, 각 매장마다 업데이트되는 실시간 리뷰 이
-                많은 데이터를 도대체 어떻게 관리해야 할까요? 정신 없이 바뀌는
-                온라인 평판을 브랜드캐스트에서 탄탄하게 관리하세요.
-                브랜드캐스트는 꼭 필요한 정보만 간추려 전해드립니다.
-                <br />
-                <b>브랜드의 평판을 확인하고, 더 큰 미래로 나아가세요!</b>
+                진짜 개에반데
+              </p>
+              <p>
+                개에반데
+              </p>
+              <p>
+                sdf
               </p>
               <button type="button" onclick="location.href='./sub_contact.html'">
                 솔루션 받기<i
-                  ><img src="images/icon_btn_arrow.png" alt=""
+                  ><img src="{% static 'images/icon_btn_arrow.png'%}" alt=""
                 /></i>
               </button>
             </li>
@@ -181,7 +192,7 @@
               </p>
             </div>
             <div class="part right">
-              <img src="images/sub_uc_detail01_row02_img01_02.jpg" alt="" />
+              <img src="{% static 'images/sub_uc_detail01_row02_img01_02.jpg '%}" alt="" />
             </div>
           </div>
           <ul class="sec_detail_row row03 clear">
@@ -206,7 +217,7 @@
                   한눈에 파악하고, 큰 그림을 그려보세요.
                 </p>
               </div>
-              <img src="images/sub_uc_detail01_row02_img02_02.jpg" alt="" />
+              <img src="{% static 'images/sub_uc_detail01_row02_img02_02.jpg' %} " alt="" />
             </li>
             <li class="uc_main_detail uc_main_detail04">
               <div>
@@ -230,11 +241,11 @@
             </li>
           </ul>
           <div class="sec_detail_row uc_main_detail row04">
-            <img src="images/sub_uc_detail02_row02_img04.png" alt="" />
+            <img src="{% static 'images/sub_uc_detail02_row02_img04.png'%}" alt="" />
             <h3>우리 브랜드가 나아가야 할 방향은?</h3>
             <button type="button" onclick="location.href='./sub_contact.html'">
               솔루션 받기<i
-                ><img src="images/icon_btn_arrow.png" alt=""
+                ><img src="{% static 'images/icon_btn_arrow.png' %}" alt=""
               /></i>
             </button>
           </div>
@@ -244,30 +255,7 @@
         </div>
       </section>
     </main>
-    <footer class="main_content_w1200">
-      <ul class="footer_nav clear">
-        <li>
-          <img src="images/logo_gray.png" alt="bitlworks" />
-          <span><a href="sub_abus.html">회사소개</a></span>
-        </li>
-        <li>
-          <span><a href="sub_contact.html">제휴문의</a></span>
-        </li>
-      </ul>
-      <ul class="company_info clear">
-        <li>(주)비틀웍스</li>
-        <li>사업자등록번호 : 107-87-97578</li>
-        <li>대표이사 : 노현철</li>
-        <br />
-        <li>주소 : 서울시 마포구 성미산로 31길 13</li>
-        <li>대표전화 : <a href="tel:02-783-2346">02-783-2346</a></li>
-        <li>
-          이메일 :
-          <a href="mailto:contact@bitlworks.com">contact@bitlworks.com</a>
-        </li>
-      </ul>
-      <p class="txt_copyright">© BitLworks Inc. 2022. All Rights Reserved.</p>
-    </footer>
+
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/common.js"></script>
     <script>

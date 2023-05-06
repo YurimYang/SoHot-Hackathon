@@ -20,4 +20,5 @@ import main.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.views.main, name='main'),
+    path('sub_uc_02/', main.views.sub_uc_02, name='sub_uc_02'),
 ]
