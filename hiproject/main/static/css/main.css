@@ -306,3 +306,81 @@
 .comment-out {
   display: none !important;
 }
+
+/* 팝업 CSS */
+
+.popup-wrap h2{
+margin: 20px;
+text-align: center;
+}
+
+.popup-name{
+  margin:20px;
+  align-items: left;
+  font-size: 20px;
+  font-weight: 400;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#voice_name[type=text] {
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #ccc;
+  transition: border-color 0.3s ease-in-out;
+}
+
+
+#voice_name[type=text]:focus {
+  border-color:#073F6E;
+  outline: none;
+}
+
+.solution-btn {
+  margin:10px;
+  align-items: center;
+  } 
+
+#fileInput{
+  /* margin: 20px;
+  display: inline-block;
+  background-color: #fff;
+  color: #000;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out; */
+
+  }
+  input[type=file]::file-selector-button {
+    margin:10px;
+    width: 100px;
+    height: 40px;
+    font-weight: 400;
+    background: #fff;
+    border: 1px solid #073F6E;
+    border-radius: 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(77,77,77);
+      color: #fff;
+    }
+  }
+
+
+#make_voice_submit {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #c1c1c1;
+  color: #fff;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+#make_voice_submit:hover {
+  background-color: #073F6E;
+}
