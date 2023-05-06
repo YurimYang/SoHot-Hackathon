@@ -124,7 +124,7 @@
     <main class="sub_uc_detail_page sub_page">
       <section class="sec_sub_tit">
         <div class="content_pc">
-          <h1>USE CASE</h1>
+          <h1>Pronunciation Correction</h1>
           <i class="tit_deco01">
             <img src="{% static 'images/title_line_img02.png'%}" alt="" />
             
@@ -155,9 +155,35 @@
               <img src="{% static 'images/sub_uc01_li02.png'%}" alt="" />
             </li>
             <li class="uc_main_detail uc_main_detail01">
-              <p><b>원하는 보이스, 원하는 언어를 선택하세요</b></p>
-              <select id="language_selecter" name="language"></select>
-              <p>진짜 개에반데</p>
+              <p><b>원하는 보이스와 언어를 선택하세요</b></p>
+
+              <div className = "selection-wrap">
+              <select name="voice">
+                <option value="" selected disabled hidden > 보이스를 선택해주세요.</option>
+                <option> 혜인</option>
+                <option> 유림</option>
+                <option> 세민</option>
+                <option> 은주</option>
+                <option> kill현영교수님 </option>
+              </select>
+
+              <select name="language">
+                <option value="" selected disabled hidden > 언어를 선택해주세요.</option>
+                <option> English</option>
+                <option> German </option>
+                <option> Polish </option>
+                <option> Spanish </option>
+                <option> Italian </option>
+                <option> French Portuguese</option>
+              </select>
+            </div>
+
+            <input type="text" class="text-wrap" placeholder="Type something here">
+
+
+              <p>
+                진짜 개에반데
+              </p>
               <p>
                 개에반데
               </p>
