@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Local File Access</title>
+  </head>
+  <body>
+    <div><a>name </a><input id="voice_name" style="font-size: 15px;" type="text" class="text-wrap" placeholder="name"></div>
+    <input type="file" id="fileInput" accept=".mp3">
+    <button class="solution-btn" id="make_voice_submit" type="button" >보이스 생성하기<i></button>
+
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script>
+        $("#make_voice_submit").on('click', () => {
+            let voice_name = $('#voice_name').val();
+            const input = document.getElementById("fileInput");
+            const file = input.files[0];
+
+            console.log("Selected file:", 'http://127.0.0.1:8081/'+file.name);
+            console.log("Selected file size:", file.size);
+            console.log("Selected file type:", file.type);
+
+            $.ajax({
+                url: "https://api.elevenlabs.io/v1/voices/add",
+                method: "POST",
+                dataType: "json",
+                headers: {
+                    "Accept": "application/json",
+                    "xi-api-key": "c9f01b80da7ad1f73b2093b9e63f7e56"
+                },
+                data : {
+                    'name': voice_name,
+                },
+                files : [
+                    ('files', ('sample1.mp3', open('http://127.0.0.1:8081/'+file.name, 'rb'), 'audio/mp3')),
+                ],
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(xhr, status, error) {
+                console.log("error:", error);
+                }
+            });
+        });
+            
+    </script>
+  </body>
+</html>

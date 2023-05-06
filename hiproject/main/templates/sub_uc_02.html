@@ -162,6 +162,9 @@
               <select id="language_selecter" name="language">
                 <option value="" selected disabled hidden > 언어를 선택해주세요.</option>
               </select>
+              <button class="solution-btn" id="make_voice" type="button" >보이스 생성하기<i>
+                <img src="{% static 'images/icon_btn_arrow.png'%}" alt=""/></i>
+              </button>
             </div>
             <input id="contents" style="font-size: 15px;" type="text" class="text-wrap" placeholder="Type something here">
               <div class="solution-btn-container"><button class="solution-btn" id="submit" type="button" >솔루션 받기<i>
@@ -229,7 +232,6 @@
                 downloadLink.href = objectURL;
                 downloadLink.click();
               });
-            
             // $.ajax({
             //   url: "http://localhost/index.php",
             //   type: "POST",
@@ -243,7 +245,6 @@
             //     console.log("Error: " + error.message);
             //   }
             // });
-            // shell.exec('scp ~/Downloads/'+path+' -P 20022 root@brandcast.co.kr:/root/html/brandcast/working/land/back_0506')
           },
           error: function (xhr, status, error) {
               console.log("error:", xhr);
@@ -326,6 +327,11 @@
           console.log("error:", error);
         }
       });
+
+      $("#make_voice").on('click', () => {
+        console.log("######");
+        window.open("http://127.0.0.1:8000/make_voice_popup", "popup", "width=500,height=500,left=100,top=100");
+      })
     </script>
   </body>
 </html>

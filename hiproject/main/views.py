@@ -6,3 +6,6 @@ def main(request):
 
 def sub_uc_02(request):
     return render(request, 'sub_uc_02.html')
+
+def make_voice_popup(request):
+    return render(request, 'make_voice_popup.html')
